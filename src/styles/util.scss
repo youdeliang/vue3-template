@@ -1,0 +1,255 @@
+/**
+ * 样式工具
+ * @author: hongwenqing
+ * @date: 2019-10-25
+ */
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix,
+.cf {
+  &::after {
+    display: block;
+    height: 0;
+    clear: both;
+    font-size: 0;
+    content: ' ';
+    visibility: hidden;
+  }
+}
+
+.text-overflow-1 {
+  overflow: hidden;
+  line-height: 1.2em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+$text-overflow-total: 5;
+@while $text-overflow-total >= 2 {
+  .text-overflow-#{$text-overflow-total} {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $text-overflow-total;
+  }
+
+  $text-overflow-total: $text-overflow-total - 1;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.block-center {
+  margin: 0 auto;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+// 向右对齐
+.flex-right {
+  @extend .flex-base;
+
+  justify-content: flex-end;
+}
+// 向左对齐
+.flex-left {
+  @extend .flex-base;
+
+  justify-content: flex-start;
+}
+// 水平居中
+.flex-inline-center {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.flex-base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+// 水平、垂直居中，自动换行
+.flex-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  @extend .flex-inline;
+
+  flex-direction: row;
+}
+
+// 垂直居中，自动换行
+.flex-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-around {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+// flex 固定分配值
+$total-flex-basis: 1000;
+@while $total-flex-basis>=50 {
+  .flex-basis-#{$total-flex-basis} {
+    flex-basis: #{$total-flex-basis} !important;
+  }
+
+  $total-flex-basis: $total-flex-basis - 50;
+}
+
+// flex 活动分配值
+$total-flex: 9;
+@while $total-flex>=9 {
+  .flex-#{$total-flex} {
+    flex: #{$total-flex/10} !important;
+  }
+
+  $total-flex: $total-flex - 1;
+}
+
+// margin-* padding-* 的快捷类使用  0---50px
+$total: 100;
+@while $total>=0 {
+  .mt-#{$total} {
+    margin-top: #{$total}px !important;
+  }
+
+  .mr-#{$total} {
+    margin-right: #{$total}px !important;
+  }
+
+  .mb-#{$total} {
+    margin-bottom: #{$total}px !important;
+  }
+
+  .ml-#{$total} {
+    margin-left: #{$total}px !important;
+  }
+
+  .m-#{$total} {
+    margin: #{$total}px;
+  }
+
+  .pt-#{$total} {
+    padding-top: #{$total}px;
+  }
+
+  .pr-#{$total} {
+    padding-right: #{$total}px;
+  }
+
+  .pb-#{$total} {
+    padding-bottom: #{$total}px;
+  }
+
+  .pl-#{$total} {
+    padding-left: #{$total}px;
+  }
+
+  .p-#{$total} {
+    padding: #{$total}px;
+  }
+
+  $total: $total - 1;
+}
+
+// 字体大小
+$total-font: 30;
+@while $total-font>=8 {
+  .f-#{$total-font} {
+    font-size: #{$total-font}px !important;
+  }
+
+  $total-font: $total-font - 2;
+}
+
+// 行高
+$total-height: 50;
+@while $total-height >=10 {
+  .lh-#{$total-height} {
+    line-height: #{$total-height}px !important;
+  }
+
+  $total-height: $total-height - 2;
+}
+// 字体粗细
+$total-font-weight: 900;
+@while $total-font-weight >= 400 {
+  .fw-#{$total-font-weight} {
+    font-weight: #{$total-font-weight} !important;
+  }
+
+  $total-font-weight: $total-font-weight - 100;
+}
+
+// 鼠标指针类型
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.plain-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  border: none !important;
+}
+
+.is-show {
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+
+$total-width: 200;
+@while $total-width >= 2 {
+  .w-#{$total-width} {
+    width: #{$total-width}px;
+  }
+  $total-width: $total-width - 2;
+}
+
+$total-height: 200;
+@while $total-height >= 2 {
+  .h-#{$total-height} {
+    height: #{$total-height}px;
+  }
+  $total-height: $total-height - 2;
+}

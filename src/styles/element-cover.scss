@@ -1,0 +1,198 @@
+// cover some element-ui styles
+
+@import './variables.scss';
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+// to fixed https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  position: relative;
+  left: 0;
+  margin: 0 auto;
+  margin-top: 6vh !important;
+  transform: none;
+
+  .el-dialog__header {
+    padding: 10px;
+    border-bottom: 1px solid #e8e8e8;
+
+    .el-dialog__title {
+      margin-left: 8px;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .el-dialog__headerbtn {
+      top: 12px;
+
+      .el-dialog__close {
+        color: rgb(94, 89, 89);
+      }
+    }
+  }
+
+  .el-dialog__body {
+    max-height: 70vh;
+    overflow: auto;
+  }
+}
+
+// refine element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// dropdown
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+// datetime
+.el-date-table {
+  .el-date-table__row > td.today {
+    background: #eee;
+
+    &.in-range {
+      background: inherit;
+    }
+  }
+}
+
+// checkbox
+.el-checkbox.is-bordered + .el-checkbox.is-bordered {
+  margin-left: 0 !important;
+}
+
+.el-checkbox.is-search {
+  background-color: #fdf6ec;
+}
+
+// el-table
+.el-table {
+  // 解决表头与表体错位问题
+  th.gutter {
+    display: table-cell !important;
+  }
+
+  .el-table__header {
+    thead {
+      th {
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        background-color: $--color-primary;
+        // padding: 15px 0px;
+        border-color: $--color-primary;
+      }
+    }
+  }
+
+  .el-table__body {
+    tbody {
+      .el-table__row {
+        td {
+          // padding: 10px 0px;
+          &.el-table-column--selection .cell {
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// el-drawer
+.el-drawer {
+  overflow-y: auto;
+
+  .el-drawer__header {
+    :first-child {
+      // 修复 title 区域存在轮廓线问题
+      outline: none;
+    }
+  }
+}
+
+// el-tooltip
+.el-tooltip__popper {
+  max-width: 75vw;
+}
+
+.popover-reset {
+  padding: 0 !important;
+}
+
+.popover-form-reset {
+  .el-form-item {
+    display: flex;
+    height: 70px;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    &:last-child {
+      padding-right: 15px;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.message-box {
+  width: 260px !important;
+  min-height: 160px !important;
+
+  .el-message-box__btns {
+    padding-top: 20px;
+    direction: rtl;
+  }
+
+  .el-button {
+    width: 80px;
+    margin: 5px;
+  }
+}
+
+// 漏斗分析弹框样式
+.dialog-reset {
+  width: 745px !important;
+  // height: 625px !important;
+  .el-form {
+    display: flex;
+    padding-right: 35px;
+    padding-left: 48px;
+    flex-direction: column;
+  }
+
+  .el-dialog__body {
+    max-height: 500px;
+    min-height: 500px;
+  }
+
+  .el-button {
+    width: 82px !important;
+    height: 28px !important;
+    padding: 0;
+  }
+}

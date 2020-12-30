@@ -1,0 +1,101 @@
+@import './variables.scss';
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial,
+    sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+div:focus {
+  outline: none;
+}
+
+// main-container global css
+.app-container {
+  padding: 15px;
+}
+
+.app-container-grey {
+  height: 100%;
+  padding: 10px;
+  overflow: auto;
+  background-color: #f0f2f5;
+  box-sizing: border-box;
+}
+
+// 自定义滚动条
+::-webkit-scrollbar-track-piece {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 20px;
+  background-color: #c2c2c2;
+  border-radius: 4px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+// 设置字体颜色
+.ac-primary {
+  color: $--color-primary !important;
+}
+
+.ac-success {
+  color: $--color-success !important;
+}
+
+.ac-warning {
+  color: $--color-warning !important;
+}
+
+.ac-danger {
+  color: $--color-danger !important;
+}
+
+.ac-info {
+  color: $--color-info !important;
+}
+
+.ac-grey {
+  color: #909399 !important;
+}
+
+.ac-gray {
+  color: #f0f2f5 !important;
+}
