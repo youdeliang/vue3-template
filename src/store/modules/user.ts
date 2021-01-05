@@ -2,7 +2,6 @@ import { ActionTree, Module, MutationTree, ActionContext } from 'vuex'
 import { setToken } from '@/utils/cookies'
 const state = {
   token: '',
-  name: '',
   counter: 0
 }
 
@@ -15,10 +14,6 @@ type AugmentedActionContext = {
   ): ReturnType<Mutations[K]>
 } & Omit<ActionContext<UserStateType, UserStateType>, 'commit'>
 
-export type Mutations<S = UserStateType> = {
-  ['SET_COUNTER'](state: S, payload: number): void
-}
-
 export type Actions = {
   refreshToken: ({ commit }: AugmentedActionContext, payload: number) => void
 }
@@ -30,6 +25,10 @@ const actions: ActionTree<UserStateType, UserStateType> & Actions = {
   }
 }
 
+export type Mutations<S = UserStateType> = {
+  ['SET_COUNTER'](state: S, payload: number): void
+}
+
 const mutations: MutationTree<UserStateType> & Mutations = {
   ['SET_COUNTER'](state, payload: number) {
     state.counter = payload
@@ -37,7 +36,7 @@ const mutations: MutationTree<UserStateType> & Mutations = {
 }
 
 const user: Module<UserStateType, UserStateType> = {
-  namespaced: true,
+  // namespaced: true,
   state,
   mutations,
   actions

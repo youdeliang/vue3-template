@@ -2,7 +2,7 @@
   <div class="login-container flex-center">
     <div class="login-form">
       <div class="login-form__left">
-        <h1>VV组织业务系统</h1>
+        <h1>业务系统</h1>
         <h1>统一身份认证服务</h1>
       </div>
       <div class="login-form__right">
@@ -62,12 +62,26 @@
 <script lang="ts">
   // import { ModuleType } from '@/store/types'
   import { useStore } from '@/store'
+  import { reactive } from 'vue'
   export default {
     name: 'Login',
     setup() {
       const store = useStore()
       store.dispatch('refreshToken', 100)
+      // store.commit('SET_COUNTER', 10)
+      const name = reactive({
+        loginForm: {
+          name: '',
+          password: ''
+        }
+      })
       console.log('user :>> ', store.getters.counter)
+      return {
+        name
+      }
+    },
+    mounted() {
+      // console.log('this.$store :>> ', this.$store)
     }
     // data() {
     //   const validatePassword = (rule, value, cb) => {

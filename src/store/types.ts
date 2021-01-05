@@ -14,6 +14,8 @@ export type ModuleMutations = {
   [K in keyof UserMutations]: UserMutations[K]
 }
 
+// type ActionsType = `${K}`
+
 export type ModuleActions = {
   [K in keyof UserActions]: UserActions[K]
 }

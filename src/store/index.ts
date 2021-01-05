@@ -1,8 +1,12 @@
-import { createStore, Store as VuexStore, ModuleTree, CommitOptions, DispatchOptions } from 'vuex'
+import { createStore, ModuleTree, DispatchOptions, CommitOptions, Store as VuexStore } from 'vuex'
 import type { App } from 'vue'
 import { Getters, getters } from './getters'
 import { ModuleType, ModuleMutations, ModuleActions } from './types'
 const path = require('path')
+
+import module from '@/store/modules/**/*.@(ts)'
+
+console.log('modulesssss :>> ', module)
 
 const file = require.context('./modules', true, /\.ts/)
 
@@ -18,9 +22,9 @@ const store = createStore({
   getters
 })
 
-export type Store = Omit<VuexStore<ModuleType>, 'getters' | 'commit' | 'dispatch'> & {
+export type Store<S = ModuleType> = Omit<VuexStore<S>, 'commit' | 'getters' | 'dispatch'> & {
   commit<K extends keyof ModuleMutations, P extends Parameters<ModuleMutations[K]>[1]>(
-    Key: K,
+    key: K,
     payload: P,
     options?: CommitOptions
   ): ReturnType<ModuleMutations[K]>
@@ -35,8 +39,7 @@ export type Store = Omit<VuexStore<ModuleType>, 'getters' | 'commit' | 'dispatch
     [K in keyof Getters]: ReturnType<Getters[K]>
   }
 }
-
-export function useStore() {
+export function useStore(): Store {
   return store as Store
 }
 
