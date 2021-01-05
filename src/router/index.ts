@@ -1,20 +1,44 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-// import Home from '../views/Home.vue'
+import type { App } from 'vue'
+import { scrollWaiter } from '../utils/scrollWaiter'
+import { basicRoutes } from './routes'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/login',
-    name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue')
-  }
-]
-
+// app router
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: basicRoutes as RouteRecordRaw[],
+  scrollBehavior: async (to, from, savedPosition) => {
+    await scrollWaiter.wait()
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      if (to.matched.every((record, i) => from.matched[i] !== record)) {
+        return { left: 0, top: 0 }
+      }
+      return false
+    }
+  }
 })
+
+// reset router
+export function resetRouter() {
+  const resetWhiteNameList = [
+    'Login',
+    'Root'
+    // 'FullErrorPage'
+  ]
+  router.getRoutes().forEach((route) => {
+    const { name } = route
+    if (name && !resetWhiteNameList.includes(name as string)) {
+      router.removeRoute(name)
+    }
+  })
+}
+
+// config router
+export function setupRouter(app: App<Element>) {
+  app.use(router)
+  // createGuard(router)
+}
 
 export default router
